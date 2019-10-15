@@ -8,7 +8,7 @@ const KnexSessionStore = require('connect-session-knex')(session)// Don't forget
 const dbConnection = require('./database/dbConfig.js')// Check this is the right path
 const server = express();
 
-const sessionConfig = {
+const sessionConfiguration = {
     name: 'mimicookie',
     secret: process.env.SESSION_SECRET || 'keep it secret, keep it safe',
     cookie: {
@@ -33,7 +33,7 @@ server.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
 }))
-server.use(session(sessionConfig))
+server.use(session(sessionConfiguration))
 
 server.use('/api/auth', authRouter);
 server.use('/api/users', UserRouter);
