@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
             req.session.user = user  
           res.status(200).json({ message: `Welcome ${user.username}!` });
         } else {
-          res.status(401).json({ message: 'You cannot pass!' });
+          res.status(401).json({ message: 'You shall not pass!' });
         }
       })
       .catch(error => {
@@ -35,18 +35,18 @@ router.post('/register', (req, res) => {
       });
   });
 
-  router.get('/logout', (req, res) => {
-    if(req.session) {
-      req.session.destroy(error => {
-        if(error) {
-          res.status(500).json({message: 'checkout'})
-        } else {
-        res.status(200).json({message: 'bye'})
-        }
-      })
-    } else {
-      res.status(200).json({message: 'already logged out'})
-    }
-  })
+  // router.get('/logout', (req, res) => {
+  //   if(req.session) {
+  //     req.session.destroy(error => {
+  //       if(error) {
+  //         res.status(500).json({message: 'checkout'})
+  //       } else {
+  //       res.status(200).json({message: 'bye'})
+  //       }
+  //     })
+  //   } else {
+  //     res.status(200).json({message: 'already logged out'})
+  //   }
+  // })
 
   module.exports = router
